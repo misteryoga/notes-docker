@@ -81,13 +81,13 @@ docker container run --rm --name ubuntucontainer --mount "type=bind,source=/home
 
 
 ## 3. Network
-### GET LIST NETWORK
+### Get list network
 (default sudah ada bawaan docker)
 ```
 docker network ls
 ```
 
-### CREATE NETWORK
+### Create network
 ```
 docker network create --driver drive_type name_network
 ```
@@ -95,18 +95,18 @@ docker network create --driver drive_type name_network
 docker network create --drive bridge contohnetwork
 ```
 
-### REMOVE NETWORK
+### Remove network
 (matikan kontainer yg menggunakan network yg akan d hapus terlebih dahulu)
 ```
 docker network rm name_network
 ```
 
-### REMOVE CONTAINER FROM NETWORK
+### Remove container from network
 ```
 docker network disconnect name_network name_container
 ```
 
-### ADD EXISTSING CONTAINER TO NETWORK
+### Add existing container to network
 ```
 docker network connect name_network name_container
 ```
