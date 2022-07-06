@@ -1,5 +1,8 @@
 # Docker
-## 1. Container
+## 1. Image
+
+
+## 2. Container
 ### Get list container running
 ```
 docker container ls
@@ -74,4 +77,58 @@ tar cvf /backup/backup.tar.gz /data
 #### backup with container run (after run then remove container)(
 ```
 docker container run --rm --name ubuntucontainer --mount "type=bind,source=/home/yoga/Labs/docker/mongodatabak,destination=/backup" --mount "type=volume,source=mongovolume2,destination=/data" ubuntu:latest tar cvf /backup/backup-backup.tar.gz /data
+```
+
+
+## 3. Network
+### GET LIST NETWORK
+(default sudah ada bawaan docker)
+```
+docker network ls
+```
+
+### CREATE NETWORK
+```
+docker network create --driver drive_type name_network
+```
+```
+docker network create --drive bridge contohnetwork
+```
+
+### REMOVE NETWORK
+(matikan kontainer yg menggunakan network yg akan d hapus terlebih dahulu)
+```
+docker network rm name_network
+```
+
+### REMOVE CONTAINER FROM NETWORK
+```
+docker network disconnect name_network name_container
+```
+
+### ADD EXISTSING CONTAINER TO NETWORK
+```
+docker network connect name_network name_container
+```
+
+
+## 4. Volume
+### get list volume
+```
+docker volume ls
+```
+
+### remove volume
+```
+docker volume rm name_volume
+```
+
+### create volume
+```
+docker volume create name_volume
+```
+
+### resotre volume
+```
+docker container run --rm --name ubunturestore --mount "type=bind,source=/home/yoga/Labs/docker/mongodatabak,destination=/backup" --mount "type=volume,source=mongodatarestore,destination=/data" ubuntu:latest bash -c "cd /data && tar xvf /backup/backup.tar.gz --strip 1"
 ```
